@@ -1,0 +1,20 @@
+{
+  "name": "open-new-page",
+  "version": "0.0.2",
+  "description": "在浏览器新的标签页中打开页面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiguaxigua/open-new-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiguaxigua/open-new-page/issues"
+  },
+  "homepage": "https://github.com/xiguaxigua/open-new-page#readme"
+}
