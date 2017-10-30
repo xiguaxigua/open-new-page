@@ -15,7 +15,6 @@ with js.
 
 ```shell
 npm install open-new-page --save
-// Or: yarn add open-new-page
 ```
 
 ## Start
@@ -24,7 +23,6 @@ npm install open-new-page --save
 
 ```js
 import OpenNewPage from 'open-new-page'
-// var OpenNewPage = require('open-new-Page')
 
 OpenNewPage('https://www.baidu.com')
 ```
@@ -32,9 +30,6 @@ OpenNewPage('https://www.baidu.com')
 #### set method and params
 
 ```js
-import OpenNewPage from 'open-new-page'
-// var OpenNewPage = require('open-new-Page')
-
 openNewPage({
   url: 'http://www.baidu.com',
   method: 'GET',
@@ -56,7 +51,7 @@ openNewPage({
 openNewPage('https://dn-quietcoder.qbox.me/table.xlsx')
 ```
 
-#### download images
+#### download image
 
 ```js
 openNewPage({
@@ -92,17 +87,25 @@ openNewPage({
   <script>
     var btn = document.getElementById('btn')
     btn.addEventListener('click', function () {
-      openNewPage('http://www.baidu.com', 'GET', {
-        a: 1,
-        b: true,
-        c: [1, 2, 3],
-        d: { d1: 1 },
-        e: '123',
-        f: null,
-        g: undefined
+      openNewPage({
+        url: 'http://www.baidu.com',
+        method: 'GET',
+        params: {
+          a: 1,
+          b: true,
+          c: [1, 2, 3],
+          d: { d1: 1 },
+          e: '123',
+          f: null,
+          g: undefined
+        }
       })
     })
   </script>
 </body>
 </html>
 ```
+
+## LICENSE
+
+MIT
