@@ -35,14 +35,43 @@ OpenNewPage('https://www.baidu.com')
 import OpenNewPage from 'open-new-page'
 // var OpenNewPage = require('open-new-Page')
 
-openNewPage('http://www.baidu.com', 'GET', {
-  a: 1,
-  b: true,
-  c: [1, 2, 3],
-  d: { d1: 1 },
-  e: '123',
-  f: null,
-  g: undefined
+openNewPage({
+  url: 'http://www.baidu.com',
+  method: 'GET',
+  params: {
+    a: 1,
+    b: true,
+    c: [1, 2, 3],
+    d: { d1: 1 },
+    e: '123',
+    f: null,
+    g: undefined
+  }
+})
+```
+
+#### download files
+
+```js
+openNewPage('https://dn-quietcoder.qbox.me/table.xlsx')
+```
+
+#### download images
+
+```js
+openNewPage({
+  url: 'https://dn-quietcoder.qbox.me/avatar-1.jpg',
+  params: {
+    a: 1,
+    b: true,
+    c: [1, 2, 3],
+    d: { d1: 1 },
+    e: '123',
+    f: null,
+    g: undefined
+  },
+  useATag: true
+  // fileName: 'xxx.jpg'
 })
 ```
 
@@ -59,7 +88,7 @@ openNewPage('http://www.baidu.com', 'GET', {
   <script src="https://unpkg.com/open-new-page/index.global.js"></script>
 </head>
 <body>
-  <button id="btn">点击打开新页面</button>
+  <button id="btn">open new page with params</button>
   <script>
     var btn = document.getElementById('btn')
     btn.addEventListener('click', function () {

@@ -1,20 +1,24 @@
 'use strict';
 
-function openNewPage(url) {
-  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'POST';
-  var params = arguments[2];
-
-  var id = '__open_new_page_form__';
-  var form = document.getElementById(id);
-
-  if (!form) {
-    form = document.createElement('form');
-    form.id = id;
-    form.style.display = 'none';
-    form.method = method;
-    form.target = '_blank';
-    document.body.appendChild(form);
+function openWithATag(url, params, fileName) {
+  var link = document.createElement('a');
+  if (params) {
+    url = url + '?' + Object.keys(params).map(function (key) {
+      return key + '=' + JSON.stringify(params[key]);
+    }).join('&');
   }
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function openWithForm(url, method, params) {
+  var form = document.createElement('form');
+  form.style.display = 'none';
+  form.method = method;
+  form.target = '_blank';
 
   if (params) {
     form.innerHTML = '';
@@ -28,7 +32,28 @@ function openNewPage(url) {
   }
 
   form.action = url;
+
+  document.body.appendChild(form);
   form.submit();
+  document.body.removeChild(form);
+}
+
+function openNewPage(args) {
+  var url = args.url,
+      _args$method = args.method,
+      method = _args$method === undefined ? 'POST' : _args$method,
+      params = args.params,
+      useATag = args.useATag,
+      _args$fileName = args.fileName,
+      fileName = _args$fileName === undefined ? '' : _args$fileName;
+
+  if (typeof args === 'string') url = args;
+
+  if (useATag) {
+    openWithATag(url, params, fileName);
+  } else {
+    openWithForm(url, method, params);
+  }
 }
 
 module.exports = openNewPage;

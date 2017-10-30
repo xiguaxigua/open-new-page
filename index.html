@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./index.global.js"></script>
+</head>
+<body>
+  <button id="open-page">点击打开新页面</button>
+  <button id="download-file">下载文件</button>
+  <button id="download-picture">下载图片</button>
+  <script>
+    var btn = document.getElementById('open-page')
+    btn.addEventListener('click', function () {
+      openNewPage({
+        url: 'http://www.baidu.com',
+        method: 'GET',
+        params: {
+          a: 1,
+          b: true,
+          c: [1, 2, 3],
+          d: { d1: 1 },
+          e: '123',
+          f: null,
+          g: undefined
+        }
+      })
+    })
+    var btnFile = document.getElementById('download-file')
+    btnFile.addEventListener('click', function () {
+      openNewPage({
+        url: 'https://dn-quietcoder.qbox.me/table.xlsx'
+      })
+    })
+
+    var btnPicture = document.getElementById('download-picture')
+    btnPicture.addEventListener('click', function () {
+      openNewPage({
+        url: 'https://dn-quietcoder.qbox.me/avatar-1.jpg',
+        params: {
+          a: 1,
+          b: true,
+          c: [1, 2, 3],
+          d: { d1: 1 },
+          e: '123',
+          f: null,
+          g: undefined
+        },
+        useATag: true
+      })
+    })
+  </script>
+</body>
+</html>
