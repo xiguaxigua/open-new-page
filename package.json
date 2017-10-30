@@ -4,7 +4,7 @@
   "description": "在浏览器新的标签页中打开页面",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ./rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/xiguaxigua/open-new-page/issues"
   },
-  "homepage": "https://github.com/xiguaxigua/open-new-page#readme"
+  "homepage": "https://github.com/xiguaxigua/open-new-page#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  }
 }

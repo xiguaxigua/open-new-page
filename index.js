@@ -1,8 +1,27 @@
-export default function openNewPage (url) {
-  var form = document.createElement('form')
+export default function openNewPage (url, method = 'POST', params) {
+  const id = '__open_new_page_form__'
+  let form = document.getElementById(id)
+
+  if (!form) {
+    form = document.createElement('form')
+    form.id = id
+    form.style.display = 'none'
+    form.method = method
+    form.target = '_blank'
+    document.body.appendChild(form)
+  }
+
+  if (params) {
+    form.innerHTML = ''
+    Object.keys(params).forEach(key => {
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = key
+      input.value = JSON.stringify(params[key])
+      form.appendChild(input)
+    })
+  }
+
   form.action = url
-  form.target = '_blank'
-  form.method = 'POST'
-  document.body.appendChild(form)
   form.submit()
 }

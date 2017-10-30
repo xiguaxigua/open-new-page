@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/open-new-page/index.global.js"></script>
+</head>
+<body>
+  <button id="btn">点击打开新页面</button>
+  <script>
+    var btn = document.getElementById('btn')
+    btn.addEventListener('click', function () {
+      openNewPage('http://www.baidu.com', 'GET', {
+        a: 1,
+        b: true,
+        c: [1, 2, 3],
+        d: { d1: 1 },
+        e: '123',
+        f: null,
+        g: undefined
+      })
+    })
+  </script>
+</body>
+</html>
