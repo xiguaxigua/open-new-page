@@ -1,12 +1,15 @@
 # open-new-page
 
 [![NPM downloads](http://img.shields.io/npm/dm/open-new-page.svg)](https://npmjs.org/package/open-new-page)
-![JS gzip size](http://img.badgesize.io/https://unpkg.com/open-new-page/lib/index.js?compression=gzip&label=gzip%20size:%20JS)
+![JS gzip size](http://img.badgesize.io/https://unpkg.com/open-new-page/index.js?compression=gzip&label=gzip%20size:%20JS)
 [![Npm package](https://img.shields.io/npm/v/open-new-page.svg)](https://www.npmjs.org/package/open-new-page)
 ![Language](https://img.shields.io/badge/language-javascript-yellow.svg)
 ![License](https://img.shields.io/badge/license-MIT-000000.svg)
 
-> As you know, if you want to open a new tab in browser or in the `iframe` by `window.open()`, browser will prevent jump action, and you can use this to solve the problem.
+> As you know, if you want to open a new tab in browser or in the `iframe` by
+`window.open()`, browser will prevent jump action, and you can use this to
+solve the problem. Besides, it's also useful when you want to download files
+with js.
 
 ## Install
 
