@@ -1,7 +1,8 @@
 function openWithATag (url, params, fileName, download) {
   const link = document.createElement('a')
   if (params) {
-    url = url + '?' + Object.keys(params).map(key => {
+    const symbol = ~url.indexOf('?') ? '&' : '?'
+    url = url + symbol + Object.keys(params).map(key => {
       return `${key}=${JSON.stringify(params[key])}`
     }).join('&')
   }
