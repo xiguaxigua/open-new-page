@@ -1,60 +1,63 @@
-function openWithATag (url, params, fileName, download) {
-  const link = document.createElement('a')
+function openWithATag(url, params, fileName, download) {
+  var link = document.createElement('a');
   if (params) {
-    const symbol = ~url.indexOf('?') ? '&' : '?'
-    url = url + symbol + Object.keys(params).map(key => {
-      return `${key}=${JSON.stringify(params[key])}`
-    }).join('&')
+    var symbol = ~url.indexOf('?') ? '&' : '?';
+    url = url + symbol + Object.keys(params).map(function (key) {
+      return key + '=' + JSON.stringify(params[key]);
+    }).join('&');
   }
-  link.href = url
+  link.href = url;
   if (download) {
-    link.download = fileName
+    link.download = fileName;
   } else {
-    link.target = '_blank'
+    link.target = '_blank';
   }
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
-function openWithForm (url, method, params) {
-  const form = document.createElement('form')
-  form.style.display = 'none'
-  form.method = method
-  form.target = '_blank'
+function openWithForm(url, method, params) {
+  var form = document.createElement('form');
+  form.style.display = 'none';
+  form.method = method;
+  form.target = '_blank';
 
   if (params) {
-    form.innerHTML = ''
-    Object.keys(params).forEach(key => {
-      const input = document.createElement('input')
-      input.type = 'hidden'
-      input.name = key
-      input.value = JSON.stringify(params[key])
-      form.appendChild(input)
-    })
+    form.innerHTML = '';
+    Object.keys(params).forEach(function (key) {
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = JSON.stringify(params[key]);
+      form.appendChild(input);
+    });
   }
 
-  form.action = url
+  form.action = url;
 
-  document.body.appendChild(form)
-  form.submit()
-  document.body.removeChild(form)
+  document.body.appendChild(form);
+  form.submit();
+  document.body.removeChild(form);
 }
 
-export default function openNewPage (args) {
-  let {
-    url,
-    method = 'POST',
-    params,
-    useATag,
-    fileName = '',
-    download
-  } = args
-  if (typeof args === 'string') url = args
+function openNewPage(args) {
+  var url = args.url,
+      _args$method = args.method,
+      method = _args$method === undefined ? 'POST' : _args$method,
+      params = args.params,
+      useATag = args.useATag,
+      _args$fileName = args.fileName,
+      fileName = _args$fileName === undefined ? '' : _args$fileName,
+      download = args.download;
+
+  if (typeof args === 'string') url = args;
 
   if (useATag) {
-    openWithATag(url, params, fileName, download)
+    openWithATag(url, params, fileName, download);
   } else {
-    openWithForm(url, method, params)
+    openWithForm(url, method, params);
   }
 }
+
+export default openNewPage;
