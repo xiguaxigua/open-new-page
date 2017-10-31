@@ -3,7 +3,8 @@
 function openWithATag(url, params, fileName, download) {
   var link = document.createElement('a');
   if (params) {
-    url = url + '?' + Object.keys(params).map(function (key) {
+    var symbol = ~url.indexOf('?') ? '&' : '?';
+    url = url + symbol + Object.keys(params).map(function (key) {
       return key + '=' + JSON.stringify(params[key]);
     }).join('&');
   }
