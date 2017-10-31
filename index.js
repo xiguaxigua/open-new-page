@@ -1,4 +1,4 @@
-function openWithATag (url, params, fileName) {
+function openWithATag (url, params, fileName, download) {
   const link = document.createElement('a')
   if (params) {
     url = url + '?' + Object.keys(params).map(key => {
@@ -6,7 +6,11 @@ function openWithATag (url, params, fileName) {
     }).join('&')
   }
   link.href = url
-  link.download = fileName
+  if (download) {
+    link.download = fileName
+  } else {
+    link.target = '_blank'
+  }
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
@@ -37,11 +41,18 @@ function openWithForm (url, method, params) {
 }
 
 export default function openNewPage (args) {
-  let { url, method = 'POST', params, useATag, fileName = '' } = args
+  let {
+    url,
+    method = 'POST',
+    params,
+    useATag,
+    fileName = '',
+    download
+  } = args
   if (typeof args === 'string') url = args
 
   if (useATag) {
-    openWithATag(url, params, fileName)
+    openWithATag(url, params, fileName, download)
   } else {
     openWithForm(url, method, params)
   }

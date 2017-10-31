@@ -1,6 +1,6 @@
 'use strict';
 
-function openWithATag(url, params, fileName) {
+function openWithATag(url, params, fileName, download) {
   var link = document.createElement('a');
   if (params) {
     url = url + '?' + Object.keys(params).map(function (key) {
@@ -8,10 +8,14 @@ function openWithATag(url, params, fileName) {
     }).join('&');
   }
   link.href = url;
-  link.download = fileName;
+  if (download) {
+    link.download = fileName;
+  } else {
+    link.target = '_blank';
+  }
   document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link);
+  // document.body.removeChild(link)
 }
 
 function openWithForm(url, method, params) {
@@ -45,12 +49,13 @@ function openNewPage(args) {
       params = args.params,
       useATag = args.useATag,
       _args$fileName = args.fileName,
-      fileName = _args$fileName === undefined ? '' : _args$fileName;
+      fileName = _args$fileName === undefined ? '' : _args$fileName,
+      download = args.download;
 
   if (typeof args === 'string') url = args;
 
   if (useATag) {
-    openWithATag(url, params, fileName);
+    openWithATag(url, params, fileName, download);
   } else {
     openWithForm(url, method, params);
   }

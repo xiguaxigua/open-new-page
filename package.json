@@ -4,7 +4,8 @@
   "description": "在浏览器新的标签页中打开页面",
   "main": "index.js",
   "scripts": {
-    "build": "node ./rollup.config.js"
+    "build": "node ./rollup.config.js",
+    "prePublish": "npm run build"
   },
   "repository": {
     "type": "git",
