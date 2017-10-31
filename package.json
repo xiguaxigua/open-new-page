@@ -1,11 +1,11 @@
 {
   "name": "open-new-page",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "在浏览器新的标签页中打开页面",
   "main": "index.js",
   "scripts": {
     "build": "node ./rollup.config.js",
-    "prePublish": "npm run build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

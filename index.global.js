@@ -19,7 +19,7 @@ function openWithATag(url, params, fileName, download) {
   }
   document.body.appendChild(link);
   link.click();
-  // document.body.removeChild(link)
+  document.body.removeChild(link);
 }
 
 function openWithForm(url, method, params) {
