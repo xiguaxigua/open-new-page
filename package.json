@@ -1,6 +1,6 @@
 {
   "name": "open-new-page",
-  "version": "1.2.4",
+  "version": "2.0.0",
   "description": "在浏览器新的标签页中打开页面",
   "main": "index.js",
   "scripts": {
