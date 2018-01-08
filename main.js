@@ -29,7 +29,7 @@ function openWithForm (url, method, params) {
       const input = document.createElement('input')
       input.type = 'hidden'
       input.name = key
-      input.value = JSON.stringify(params[key])
+      input.value = params[key]
       form.appendChild(input)
     })
   }
